@@ -2,35 +2,39 @@ import { useState } from 'react'
 import './App.css'
 import axios from "axios"
 
-import { API_URI, API_KEY } from './config'
+import { API_URI, API_KEY, API_MOVIE_PATH } from './config'
 import GlobalContext from './context/GlobalContext'
+
 import Header from './components/Header/Header'
+import Main from './components/Main/Main'
 
 function App() {
 
-  const API_MOVIE_PATH = '3/search/movie'
+  
 
   const [movies, setMovies] = useState([])
 
-  function fetchMovies(query){
-    axios.get(`${API_URI+API_MOVIE_PATH}`,
+  async function fetchMovies(query){
+    const res = await axios.get(`${API_URI+API_MOVIE_PATH}`,
     {params:{
       api_key : API_KEY,
       query  
       }
     })
-    .then(res => {
-      setMovies(res.data)
-      console.log(res.data)
-    })
-    .catch(err =>{
-      console.error(err)
-    })
+    try{
+      //console.log(res.data)
+      console.log(res.data.results)
+      setMovies(res.data.results)
+    }
+    catch(err){
+      console.log(err)
+    }
   }
 
   return (
     <GlobalContext.Provider value={{movies, setMovies, fetchMovies}}>
-      <Header></Header>
+      <Header/>
+      <Main/>
     </GlobalContext.Provider>
   )
 }

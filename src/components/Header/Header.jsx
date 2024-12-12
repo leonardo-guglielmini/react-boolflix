@@ -1,6 +1,8 @@
 import GlobalContext from "../../context/GlobalContext"
 import { useContext, useState } from "react"
 
+import style from "./Header.module.css"
+
 
 export default function Header(){
     
@@ -16,7 +18,7 @@ export default function Header(){
     }
 
     return(
-        <header>
+        <header className={style.header}>
             <h1>BOOLFLIX</h1>
             <form onSubmit={(e) => {e.preventDefault(); search()}} action="">
                 <input type="text" id="query" name="query" placeholder="Inserisci il titolo" onChange={(e) => {handleFormData(e)}} value={query}/>
