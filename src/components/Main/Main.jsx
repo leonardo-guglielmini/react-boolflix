@@ -10,16 +10,16 @@ export default function Main(){
         <div className={style.mainContent}>
             <section>
                 <h1 className={style.title}>MOVIES</h1>
-                {movies.map(({id, title, original_title, original_language, vote_average, poster_path})=>
-                    <Card key={id} title={title} original_title={original_title} original_language={original_language} vote_average={vote_average} poster_path={poster_path}/>
+                {movies.map((movie)=>
+                    <Card key={movie.id} data={movie}/>
                 )}
             </section>
             
             <hr />
             <section>
                 <h1 className={style.title} >SERIES</h1>
-                {series.map(({id, name, original_name, original_language, vote_average, poster_path})=>
-                    <Card key={id} title={name} original_title={original_name} original_language={original_language} vote_average={vote_average} poster_path={poster_path}/>
+                {series.map((serie)=>
+                    <Card key={serie.id} data={serie}/>
                 )}
             </section>
         </div>

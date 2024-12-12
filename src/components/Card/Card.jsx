@@ -15,38 +15,28 @@ import { API_POSTER_IMG_PATH } from "../../config"
 
 import style from "./Card.module.css"
 
-export default function Card({title="", original_title="", original_language="", vote_average="", poster_path=""}){
+export default function Card({data}){
 
-    const supported_langs = ["it", "en", "de", "ja", "fr", "es"]
 
-    let vote_final = Math.ceil(vote_average/2)
-    const vote =[]
-    console.log(vote_final)
+    const { title = data.name, original_title = data.original_name, original_language, vote_average, poster_path} = data
 
-    function setFlag(lang){
-        switch(lang){
-            case 'it':
-                return(italy);
-            case 'ja':
-                return(japan);
-            case 'en':
-                return(uk);
-            case "de":
-                return(germany);
-            case "fr":
-                return(france);
-            case "es":
-                return(spain);
-        }
+    const supported_langs ={
+        it: italy,
+        en: uk, 
+        de: germany,
+        fr: france,
+        es: spain,
+        ja: japan
     }
 
-    function showVote(){
-        for(let i=0; i<5; i++){
-            if(i+1<=vote_final){
-                vote.push(<FontAwesomeIcon key={i} icon={FullStar}/>)
-            }else vote.push(<FontAwesomeIcon key={i} icon={EmptyStar}/>)
-        }
-        return vote;
+    const getFlagImg = (lang) => supported_langs[lang] || null
+    
+    let vote_final = Math.round(vote_average/2)
+
+    const showVote = () => {
+        return Array.from({ length: 5 }, (_, i) => (
+        <FontAwesomeIcon key={i} icon={i < vote_final ? FullStar : EmptyStar} />
+        ));
     }
 
     return(
@@ -54,7 +44,9 @@ export default function Card({title="", original_title="", original_language="",
             <img src={poster_path ? `${API_POSTER_IMG_PATH+poster_path}` : placeholder} alt="poster" />
             <h1>{title}</h1>
             <h2>{original_title}</h2>
-            {supported_langs.includes(original_language) ? <img className={style.flag} src={setFlag(original_language)}></img> : <h3>{original_language}</h3>}
+            {original_language in supported_langs ? 
+            <img className={style.flag} src={getFlagImg(original_language)}/>
+            : <h3>{original_language}</h3>}
             <div>
                 {showVote()}
             </div>
