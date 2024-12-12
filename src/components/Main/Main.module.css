@@ -1,8 +1,14 @@
 .mainContent{
-    margin: 1rem 0;
+    padding: 1rem 0;
 }
 
 .title{
     color: red;
     text-align: center;
+}
+
+.list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }

@@ -19,8 +19,8 @@ export default function Header(){
     }
 
     return(
-        <header className={style.header}>
-            <h1>BOOLFLIX</h1>
+        <header className={`${style.header} container`}>
+            <h1 className={style.logo}>BOOLFLIX</h1>
             <form onSubmit={(e) => {e.preventDefault(); search()}} action="">
                 <input type="text" id="query" name="query" placeholder="Inserisci il titolo" onChange={(e) => {handleFormData(e)}} value={query}/>
             <input type="submit" value="Invia"/>

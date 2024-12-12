@@ -14,11 +14,14 @@ import placeholder from "../../assets/placeholder.png"
 import { API_POSTER_IMG_PATH } from "../../config"
 
 import style from "./Card.module.css"
+import { useState } from 'react'
 
 export default function Card({data}){
 
 
-    const { title, original_title, original_language, vote_average, poster_path} = data
+    const { title, original_title, original_language, overview, vote_average, poster_path} = data
+
+    const [showDetail, setShowDetail] = useState(false)
 
     const supported_langs ={
         it: italy,
@@ -41,15 +44,24 @@ export default function Card({data}){
 
     return(
         <div className={style.card}>
-            <img src={poster_path ? `${API_POSTER_IMG_PATH+poster_path}` : placeholder} alt="poster" />
-            <h1>{title}</h1>
-            <h2>{original_title}</h2>
-            {original_language in supported_langs ? 
-            <img className={style.flag} src={getFlagImg(original_language)}/>
-            : <h3>{original_language}</h3>}
-            <div>
-                {showVote()}
-            </div>
+            <img className={style.poster} src={poster_path ? `${API_POSTER_IMG_PATH+poster_path}` : placeholder} alt="poster" onMouseEnter={() => setShowDetail(true)} onMouseLeave={() => setShowDetail(false)}/>
+            {showDetail ? 
+                <div className={style.detailCard}>
+                    <div className={style.details}>
+                        <p className={style.title}>{title}</p>
+                        <p className={style.ogTitle}>Original title: {original_title}</p>
+                        <p className={style.overview}>Overview: {overview}</p>
+                        <div className={style.info}>
+                            {original_language in supported_langs ? 
+                            <img className={style.flag} src={getFlagImg(original_language)}/>
+                            : <h3>{original_language}</h3>}
+                            <div className={style.vote}>
+                                Vote: {showVote()}
+                            </div>
+                        </div>
+                    </div>  
+                </div> : null
+            }
         </div>
     )
 }

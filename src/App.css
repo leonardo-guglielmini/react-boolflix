@@ -4,3 +4,16 @@
   box-sizing: border-box;
 }
 
+body{
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.container{
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+
+img{
+  display: block;
+}
