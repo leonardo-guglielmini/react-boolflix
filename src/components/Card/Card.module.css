@@ -1,4 +1,10 @@
+.card{
+    margin: 0.5rem;
+    border: 1px solid black;
+}
+
 .flag{
     width: 2rem;
     aspect-ratio: 1;
 }
+

@@ -8,10 +8,9 @@ import spain from "../../assets/spain.png"
 
 import style from "./Card.module.css"
 
-export default function Card({movie}){
+export default function Card({title="", original_title="", original_language="", vote_average=""}){
 
-    const supported_langs = ["it", "en", "de", "jp", "fr", "es"]
-    const {title, original_title, original_language,vote_average} = movie;
+    const supported_langs = ["it", "en", "de", "ja", "fr", "es"]
 
     function setFlag(lang){
         switch(lang){
@@ -30,10 +29,9 @@ export default function Card({movie}){
         }
     }
 
+    
     return(
-        
-        <div>
-            {console.log(movie)}
+        <div className={style.card}>
             <h1>{title}</h1>
             <h2>{original_title}</h2>
             {supported_langs.includes(original_language) ? <img className={style.flag} src={setFlag(original_language)}></img> : <h3>{original_language}</h3>}

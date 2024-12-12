@@ -6,7 +6,7 @@ import style from "./Header.module.css"
 
 export default function Header(){
     
-    const {fetchMovies} = useContext(GlobalContext)
+    const {fetchMovies, fetchSeries} = useContext(GlobalContext)
     const [query, setQuery] = useState("")
 
     function handleFormData(e){
@@ -15,6 +15,7 @@ export default function Header(){
 
     function search(){
         fetchMovies(query);
+        fetchSeries(query);
     }
 
     return(
