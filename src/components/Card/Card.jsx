@@ -18,7 +18,7 @@ import style from "./Card.module.css"
 export default function Card({data}){
 
 
-    const { title = data.name, original_title = data.original_name, original_language, vote_average, poster_path} = data
+    const { title, original_title, original_language, vote_average, poster_path} = data
 
     const supported_langs ={
         it: italy,

@@ -15,6 +15,16 @@ function App() {
   const [movies, setMovies] = useState([])
   const [series, setSeries] = useState([])
 
+  function unifyResults(data){
+    const {name, original_name, ...rest} = data;
+
+    return{
+      title: name,
+      original_title: original_name,
+      ...rest
+    }
+  }
+
   async function fetchMovies(query){
     const res = await axios.get(`${API_URI+API_MOVIE_PATH}`,
     {params:{
@@ -25,6 +35,7 @@ function App() {
     try{
       //console.log(res.data)
       //console.log(res.data.results)
+
       setMovies(res.data.results)
     }
     catch(err){
@@ -41,7 +52,8 @@ function App() {
     try{
       //console.log(res.data)
       //console.log(res.data.results)
-      setSeries(res.data.results)
+      const unifiedResults = res.data.results.map((data) => unifyResults(data))
+      setSeries(unifiedResults)
     }
     catch(err){
       console.log(err)
