@@ -23,7 +23,7 @@ function App() {
     })
     try{
       //console.log(res.data)
-      console.log(res.data.results)
+      //console.log(res.data.results)
       setMovies(res.data.results)
     }
     catch(err){
