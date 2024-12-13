@@ -1,0 +1,14 @@
+.list{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    overflow-y: hidden;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.loading{
+    margin: 0 auto;
+}

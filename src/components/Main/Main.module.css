@@ -3,27 +3,6 @@
     user-select: none;
 }
 
-.title{
-    color: red;
-    text-align: center;
-    margin: 0.5rem 0;
-    font-size: 2rem;
-}
-
-.list{
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    overflow-x: auto;
-    &::-webkit-scrollbar {
-        display: none;
-    }
-}
-
 .separator{
     margin: 1rem 0;
-}
-
-.loading{
-    margin: 0 auto;
 }

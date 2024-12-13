@@ -9,9 +9,7 @@ import Header from './components/Header/Header'
 import Main from './components/Main/Main'
 
 function App() {
-
   
-
   const [movies, setMovies] = useState([])
   const [series, setSeries] = useState([])
 
@@ -25,43 +23,37 @@ function App() {
     }
   }
 
-  async function fetchMovies(query){
-    const res = await axios.get(`${API_URI+API_MOVIE_PATH}`,
+  async function fetchData(query){
+    const resMovies = await axios.get(`${API_URI+API_MOVIE_PATH}`,
     {params:{
       api_key : API_KEY,
       query  
       }
     })
     try{
-      //console.log(res.data)
-      //console.log(res.data.results)
+      setMovies(resMovies.data.results)
+    }
+    catch(err){
+      console.log(err)
+    }
 
-      setMovies(res.data.results)
-    }
-    catch(err){
-      console.log(err)
-    }
-  }
-  async function fetchSeries(query){
-    const res = await axios.get(`${API_URI+API_SERIES_PATH}`,
-    {params:{
-      api_key : API_KEY,
-      query  
+    const resSeries = await axios.get(`${API_URI+API_SERIES_PATH}`,
+      {params:{
+        api_key : API_KEY,
+        query  
+        }
+      })
+      try{
+        const unifiedResults = resSeries.data.results.map((data) => unifyResults(data))
+        setSeries(unifiedResults)
       }
-    })
-    try{
-      //console.log(res.data)
-      //console.log(res.data.results)
-      const unifiedResults = res.data.results.map((data) => unifyResults(data))
-      setSeries(unifiedResults)
-    }
-    catch(err){
-      console.log(err)
-    }
+      catch(err){
+        console.log(err)
+      }
   }
 
   return (
-    <GlobalContext.Provider value={{movies, setMovies, fetchMovies, series, setSeries, fetchSeries}}>
+    <GlobalContext.Provider value={{movies, setMovies, series, setSeries, fetchData}}>
       <Header/>
       <Main/>
     </GlobalContext.Provider>
