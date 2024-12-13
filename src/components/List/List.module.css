@@ -11,4 +11,6 @@
 
 .loading{
     margin: 0 auto;
+    pointer-events: none;
+    user-select: none;
 }

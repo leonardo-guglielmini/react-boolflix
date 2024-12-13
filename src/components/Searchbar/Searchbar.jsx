@@ -11,7 +11,6 @@ export default function Searchbar(){
 
     function handleFormData(e){
         setQuery(e.target.value)
-        
     }
 
     function search(){

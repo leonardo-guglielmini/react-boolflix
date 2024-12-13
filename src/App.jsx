@@ -7,9 +7,10 @@ import GlobalContext from './context/GlobalContext'
 
 import Header from './components/Header/Header'
 import Main from './components/Main/Main'
+import Footer from './components/Footer/Footer'
 
 function App() {
-  
+
   const [movies, setMovies] = useState([])
   const [series, setSeries] = useState([])
 
@@ -56,6 +57,7 @@ function App() {
     <GlobalContext.Provider value={{movies, setMovies, series, setSeries, fetchData}}>
       <Header/>
       <Main/>
+      <Footer/>
     </GlobalContext.Provider>
   )
 }
