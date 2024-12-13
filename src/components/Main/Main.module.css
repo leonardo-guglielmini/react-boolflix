@@ -6,3 +6,9 @@
 .separator{
     margin: 1rem 0;
 }
+
+.title{
+    color: red;
+    text-align: center;
+    margin: 2rem 0;
+}

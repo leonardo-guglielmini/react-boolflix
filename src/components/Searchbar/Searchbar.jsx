@@ -1,6 +1,10 @@
 import GlobalContext from "../../context/GlobalContext"
 import { useContext, useState } from "react"
 
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMagnifyingGlass as searchIcon }  from '@fortawesome/free-solid-svg-icons'
+
 import style from "./Searchbar.module.css"
 
 export default function Searchbar(){
@@ -19,9 +23,9 @@ export default function Searchbar(){
     }
 
     return(
-        <form className={style.form} onMouseEnter={() => setSearching(true)} onMouseLeave={() => setSearching(false)} onSubmit={(e) => {e.preventDefault(); search()}} action="">
-                <input className={`${searching? style.searching : null} ${style.search}`} type="text" id="query" name="query" placeholder={`Search...`} onChange={(e) => {handleFormData(e)}} value={query}/>
-                <input className={style.submit} type="submit"/>
-            </form>
+        <form className={style.form} onSubmit={(e) => {e.preventDefault(); search()}} action="">
+            <input onMouseEnter={() => setSearching(true)} onMouseLeave={() => setSearching(false)} className={`${searching? style.searching : null} ${style.search}`} type="text" id="query" name="query" placeholder={`Search...`} onChange={(e) => {handleFormData(e)}} value={query}/>
+            <button type="submit" className={style.submit}><FontAwesomeIcon icon={searchIcon} /></button>
+        </form>
     )
 }

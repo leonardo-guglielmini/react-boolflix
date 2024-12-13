@@ -1,12 +1,23 @@
 .header{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     padding: 1rem 0.5rem;
 }
 
 .logo{
-    color: orange;
-    font-size: 2.5rem;
     vertical-align: middle;
+    width: 15rem;
+}
+
+
+.pages{
+    color: whitesmoke;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    flex-grow: 1;
+    margin: 2rem;
+    a{
+        margin: 0 1rem;
+    }
 }

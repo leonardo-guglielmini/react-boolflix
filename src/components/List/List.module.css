@@ -11,6 +11,7 @@
 
 .loading{
     margin: 0 auto;
+    width: 10rem;
     pointer-events: none;
     user-select: none;
 }

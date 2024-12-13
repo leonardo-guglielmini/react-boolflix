@@ -11,8 +11,10 @@ export default function Main(){
 
     return(
         <div className={`${style.mainContent} container`}>
+            <h1 className={style.title}>MOVIES</h1>
             <List data={movies}/>
             <hr className={style.separator}/>
+            <h1 className={style.title}>TV SERIES</h1>
             <List data={series}/>
         </div>
     )
