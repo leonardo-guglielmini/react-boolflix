@@ -17,37 +17,6 @@ function App() {
   const page = 1;
   const sort = "popularity.desc"
 
-  async function fetchPopular(){
-    const resMovies = await axios.get(`${API_URI_DISCOVER+API_MOVIE_PATH}`,
-    {params:{
-      api_key : API_KEY,
-      page,
-      sort_by : sort 
-      }
-    })
-    try{
-      setMovies(resMovies.data.results)
-    }
-    catch(err){
-      console.error(err)
-    }
-
-    const resSeries = await axios.get(`${API_URI_DISCOVER+API_SERIES_PATH}`,
-      {params:{
-        api_key : API_KEY,
-        page,
-        sort_by : sort 
-        }
-      })
-      try{
-        const unifiedResults = resSeries.data.results.map((data) => unifyResults(data))
-        setSeries(unifiedResults)
-      }
-      catch(err){
-        console.error(err)
-      }
-  }
-
   function unifyResults(data){
     const {name, original_name, ...rest} = data;
 
@@ -87,7 +56,38 @@ function App() {
       }
   }
 
-  useEffect(() =>{fetchPopular()},[])
+  useEffect(() =>{  async function fetchPopular(){
+    const resMovies = await axios.get(`${API_URI_DISCOVER+API_MOVIE_PATH}`,
+    {params:{
+      api_key : API_KEY,
+      page,
+      sort_by : sort 
+      }
+    })
+    try{
+      setMovies(resMovies.data.results)
+    }
+    catch(err){
+      console.error(err)
+    }
+
+    const resSeries = await axios.get(`${API_URI_DISCOVER+API_SERIES_PATH}`,
+      {params:{
+        api_key : API_KEY,
+        page,
+        sort_by : sort 
+        }
+      })
+      try{
+        const unifiedResults = resSeries.data.results.map((data) => unifyResults(data))
+        setSeries(unifiedResults)
+      }
+      catch(err){
+        console.error(err)
+      }
+  }
+  fetchPopular()
+  },[])
 
   return (
     <GlobalContext.Provider value={{movies, setMovies, series, setSeries, fetchData}}>
