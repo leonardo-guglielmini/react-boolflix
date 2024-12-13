@@ -49,14 +49,14 @@ export default function Card({data}){
                 <div className={style.detailCard}>
                     <div className={style.details}>
                         <p className={style.title}>{title}</p>
-                        <p className={style.ogTitle}>Original title: {original_title}</p>
+                        <p className={style.ogTitle}> <span style={{fontWeight:"bold", color:"wheat"}}>Original title: </span>{original_title}</p>
                         <p className={style.overview}>Overview: {overview}</p>
                         <div className={style.info}>
                             {original_language in supported_langs ? 
                             <img className={style.flag} src={getFlagImg(original_language)}/>
                             : <h3>{original_language}</h3>}
                             <div className={style.vote}>
-                                Vote: {showVote()}
+                                Vote: <span style={{color:'yellow'}}>{showVote()}</span>
                             </div>
                         </div>
                     </div>  
