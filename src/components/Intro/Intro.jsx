@@ -25,11 +25,11 @@ export default function Intro({visible=()=>{}}){
 
 
     return(
-        <div  className={`${style.intro}`}>
+        <div onClick={()=>start()} className={`${style.intro}`}>
             <audio className={style.audio} ref={audioRef} controls>
                 <source src={audio} type="audio/wav"/>
             </audio>
-            <img onClick={()=>start()} className={`${active ? style.active : "" } ${style.logo}`} src={logo}></img>
+            <img className={`${active ? style.active : "" } ${style.logo}`} src={logo}></img>
         </div>
     )
 }
