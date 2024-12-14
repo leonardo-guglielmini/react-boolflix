@@ -97,7 +97,7 @@ function App() {
   const visible = (() => {
     const timer = setTimeout(()=>{
       setShowIntro(false)
-    }, 3500)
+    }, 2500)
     return () => clearTimeout(timer)
   })
 
@@ -107,7 +107,7 @@ function App() {
         in={showIntro}
         timeout={500}
         classNames="fade"
-        unmountOnExi>
+        unmountOnExit>
           <Intro visible={() => visible()}/>
         </CSSTransition>
       <CSSTransition
