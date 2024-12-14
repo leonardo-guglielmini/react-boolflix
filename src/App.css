@@ -28,6 +28,10 @@ a{
   color: inherit;
 }
 
+ul,ol{
+  list-style: none;
+}
+
 /*TEST FADE IN/OUT*/
 .fade-enter {
   opacity: 0;

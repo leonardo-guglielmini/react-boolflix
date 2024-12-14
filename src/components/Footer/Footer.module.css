@@ -1,8 +1,28 @@
 .footer{
-    margin: 2rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3rem;
+    padding: 2rem 5rem;
     color: white;
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.info{
+    padding-top: 2rem;
+}
+
+.info > li{
+    padding: 0.3rem 0;    
+}
+
+.socials{
+    justify-content: center;
+    display: flex;
+    gap:1rem
 }
 
 .footerText{
+    width: 50%;
     text-align: center;
 }
