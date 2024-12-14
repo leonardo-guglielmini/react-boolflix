@@ -20,7 +20,6 @@ export default function List({data=[]}){
         })
     }
     */
-
     return(
         <section>
             <div id="list" className={style.list} /*onWheel{toggleScroll}*/>

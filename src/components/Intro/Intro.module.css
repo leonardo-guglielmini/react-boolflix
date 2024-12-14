@@ -1,0 +1,19 @@
+.intro{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.active{
+    transform: scale(1.5);
+    transition: all 2s ease;
+}
+
+.audio{
+    display: none;
+}
